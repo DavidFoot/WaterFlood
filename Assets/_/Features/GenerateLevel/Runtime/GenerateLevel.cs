@@ -13,7 +13,6 @@ namespace GenerateLevel.Runtime
         #region Unity API
         private void Awake()
         {
-            _allLevels.Add(new(10, new LevelType[] { }));
             _gridSize = _levelSize.x * _levelSize.y;
             LoadLevelFrom(0);
         }
@@ -28,11 +27,10 @@ namespace GenerateLevel.Runtime
                 int y = i / _levelSize.x;
                 int x = i - y * _levelSize.x;
                 if (i % _levelSize.x == 0) x = 0;
-                GameObject gridCell = Instantiate(_tilesRepository[(int)_currentLevel.levelDesign[i]],transform);
+                GameObject gridCell = Instantiate(_tilesRepository[(int)_currentLevel.m_levelDesign[i]],transform);
                 gridCell.name = _tilesRepository[0].name + $"{x},{y}" ;
                 gridCell.transform.position = new Vector2(x, y);
-            }
-        
+            }      
         }
 
 

@@ -7,28 +7,30 @@ namespace GenerateLevel.Runtime
     [System.Serializable]
     public struct Level
     {
-        public int tryLife;
-        public LevelType[] levelDesign;
-
-        public Level(int _try, LevelType[] level)
+        public string m_levelName;
+        public int m_tryLife;
+        public LevelType[] m_levelDesign;
+        public bool m_canAddTile;
+        public Level(int maxTry, LevelType[] level,bool canAddTile, string levelName, Vector2Int coordinate)
         {
-            tryLife = _try;
-            levelDesign = level;
+            m_tryLife = maxTry;
+            m_levelDesign = level;
+            m_canAddTile = canAddTile;
+            m_levelName = levelName;
         }
     }
     [System.Serializable]
     public enum LevelType
     {
-        EMPTY=0,
-        SAND,
-        CROPS,
+        SAND=0,
+        EMPTY,
         SEEDS,
+        CROPS,
+        WATER,
         STONE,
         VILLAGER,
         VILLAGERDROWN,
-        WATER,
         ZOMBIE,
         ZOMBIEDROWN
-
     }
 }
