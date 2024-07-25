@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 9053433158393345585}
   - component: {fileID: 2753145065821904045}
   - component: {fileID: -5364479864281889153}
+  - component: {fileID: 52115940767013727}
   m_Layer: 0
   m_Name: zombie
   m_TagString: Untagged
@@ -158,7 +159,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f21bf0fe91485a34dba8de33105f3325, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -215,3 +216,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &52115940767013727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280362138890772811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e1a11d99ee64343b8bdeb777d5bdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_coordinate: {x: 0, y: 0, z: 0}
+  m_score: 0
+  m_isInterractable: 0
+  m_typeName: 
+  m_stateChangeWith: {fileID: 1270860642094983645, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  m_stateChangeTo: {fileID: 6770909633561952023, guid: 2d8e69d9c7d49f74ab2e58e529c5da9d, type: 3}
+  m_interractTo: {fileID: 0}
+  m_renderer: {fileID: 0}
+  m_cardinalPointCollider: []
+  m_colliderRadiusToCheck: 0.5

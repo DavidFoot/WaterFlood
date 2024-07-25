@@ -98,16 +98,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42859b15d1fea44438b6e9ea58f497c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_coordinate: {x: 0, y: 0}
+  m_coordinate: {x: 0, y: 0, z: 0}
   m_score: 0
   m_isInterractable: 0
   m_typeName: 
   m_checkCardinalPointDelay: 0.5
-  m_stateChangeWith: {fileID: 4106824336857586020, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  m_stateChangeWith: {fileID: 1270860642094983645, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
   m_stateChangeTo: {fileID: 4106824336857586020, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
   m_interractTo: {fileID: 5610569368768284658, guid: c5d0a6964a088234ab2a23880f2fcb12, type: 3}
   m_renderer: {fileID: 0}
   m_cardinalPointCollider: []
+  m_colliderRadiusToCheck: 0.5
 --- !u!61 &-8304041746366482086
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Tiles.Runtime
 {
-    public class SeedsTile : Tile
+    public class ZombieTile: Tile
     {
         #region Publics
         public float m_checkCardinalPointDelay = 0.8f;
         #endregion
 
-        #region Unity API
+
         private void Update()
         {
             if (_currentTimer > m_checkCardinalPointDelay)
@@ -26,11 +26,9 @@ namespace Tiles.Runtime
                 _currentTimer = 0;
             }
             _currentTimer += Time.deltaTime;
-            // Check Cardinal Point
-            // if (m_stateChangeWith) is in Cardinal Point
-            // change Tile to m_stateChangeTo
         }
-        #endregion
+
+
 
         #region Main methods
 
@@ -45,5 +43,4 @@ namespace Tiles.Runtime
         float _currentTimer = 0;
         #endregion
     }
-
 }

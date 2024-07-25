@@ -15,7 +15,7 @@ namespace GenerateLevel.Runtime
         private void Awake()
         {
             _gridSize = _levelSize.x * _levelSize.y;
-            LoadLevelFrom(0);
+            LoadLevelFrom(1);
         }
         #endregion
 
@@ -25,19 +25,19 @@ namespace GenerateLevel.Runtime
             Level _currentLevel = _allLevels[_level];
             for (int i = 0 ; i < _gridSize; i++)
             {
-                Vector3Int pos = GetPositionFromIndex(i);
+                Vector3 pos = GetPositionFromIndex(i);
                 ushort _index = (ushort)_currentLevel.m_levelDesign[i];
                 GameObject gridCell = Tile.IntantiateNewTile(_tilesRepository[_index], transform, pos, _currentLevel.m_interractableTiles);
                 
             }
         }
 
-        private Vector3Int GetPositionFromIndex(int i)
+        private Vector3 GetPositionFromIndex(int i)
         {
             int y = i / _levelSize.x;
             int x = i - y * _levelSize.x;
             if (i % _levelSize.x == 0) x = 0;
-            return new Vector3Int(x, y,0);
+            return new Vector3(x, y,0);
         }
 
         

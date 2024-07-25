@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7555358387523950094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0946999, y: 1.9158013, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -143,13 +143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a864e46326b48546a98cf10272b5adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_coordinate: {x: 0, y: 0}
+  m_coordinate: {x: 0, y: 0, z: 0}
   m_score: 0
   m_isInterractable: 0
   m_typeName: 
-  m_checkCardinalPointDelay: 0.5
-  m_stateChangeWith: {fileID: 0}
-  m_stateChangeTo: {fileID: 0}
+  m_stateChangeWith: {fileID: 1270860642094983645, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  m_stateChangeTo: {fileID: 1494669082250292042, guid: 25101bd1940b35c4686739acf77093c9, type: 3}
   m_interractTo: {fileID: 0}
   m_renderer: {fileID: 0}
   m_cardinalPointCollider: []
+  m_colliderRadiusToCheck: 0.5
+  m_checkCardinalPointDelay: 0.2

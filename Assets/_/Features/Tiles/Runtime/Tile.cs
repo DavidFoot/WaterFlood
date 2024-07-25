@@ -8,47 +8,65 @@ namespace Tiles.Runtime
 {
     public class  Tile : MonoBehaviour
     {
-        public Vector3Int m_coordinate;
+        #region Publics
+
+        public Vector3 m_coordinate;
         public int m_score;
         public bool m_isInterractable;
         public string m_typeName;
-        public float m_checkCardinalPointDelay = 0.5f;
-        public GameObject m_stateChangeWith;
+        public Tile m_stateChangeWith;
         public GameObject m_stateChangeTo;
         public GameObject m_interractTo;
         public Renderer m_renderer;
         private List<Tile> m_interractableByLevel;
-        public List<Collider2D> m_cardinalPointCollider;
+        public Collider2D[] m_cardinalPointCollider;
+        public float m_colliderRadiusToCheck = 0.5f;
+
+        #endregion
 
 
-        // WaterFlood
-        // Get CardinalObject
-        // Score Management
-        // onStateChange => Scoring ?  
+        #region Unity API
+
         private void Start()
         {
             Initialize();
         }
-
-        public void Initialize()
+        private void Update()
         {
-            m_renderer = GetComponent<Renderer>();
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit)
+                {
+                    Tile tileInterraction;
+                    if (hit.collider.gameObject.TryGetComponent<Tile>(out tileInterraction)) tileInterraction.OnClic();
+                }
+            }
         }
-
-        public  virtual void OnMouseOver()
+        public virtual void OnMouseOver()
         {
             if (m_isInterractable)
             {
                 m_renderer.material.color = Color.green;
             }
         }
-        public  virtual void OnMouseExit()
+        public virtual void OnMouseExit()
         {
             if (m_isInterractable)
             {
                 m_renderer.material.color = Color.white;
             }
         }
+
+        #endregion
+
+        #region Main Methods
+
+        public void Initialize()
+        {
+            m_renderer = GetComponent<Renderer>();
+        }
+
         public virtual void OnClic()
         {
             if (m_isInterractable)
@@ -60,10 +78,15 @@ namespace Tiles.Runtime
                 }
             }
         }
-        public static GameObject IntantiateNewTile(GameObject go, Transform parent, Vector3Int coordinate, List<Tile> interractableObjectInLevel)
+        public void ReplaceTileWith(GameObject tileReplacement)
+        {
+            GameObject newTile = IntantiateNewTile(m_stateChangeTo, transform.parent, m_coordinate, m_interractableByLevel);
+            Destroy(this.gameObject);
+        }
+        public static GameObject IntantiateNewTile(GameObject go, Transform parent, Vector3 coordinate, List<Tile> interractableObjectInLevel)
         {
             GameObject newTile = Instantiate(go, parent);
-            newTile.transform.position = (Vector3)coordinate;
+            newTile.transform.position = new Vector3(coordinate.x, coordinate.y, 0);
             newTile.name = go.name + $"{coordinate.x},{coordinate.y}";
             Tile tile = newTile.GetComponent<Tile>();
             tile.SetCoordinate(coordinate.x, coordinate.y);
@@ -72,34 +95,36 @@ namespace Tiles.Runtime
             if (tile.IsInListOfInterractable(interractableObjectInLevel)) tile.m_isInterractable = true;
             return newTile;
         }
-        private bool IsInListOfInterractable( List<Tile> currentLevelInterractable)
+        private bool IsInListOfInterractable(List<Tile> currentLevelInterractable)
         {
-
             foreach (Tile _itile in currentLevelInterractable)
             {
                 if (_itile.GetType().IsEquivalentTo(this.GetType())) return true;
             }
             return false;
         }
-        public void SetCoordinate(int x, int y)
+        public void SetCoordinate(float x, float y)
         {
-            m_coordinate = new Vector3Int(x,y, 0);
+            m_coordinate = new Vector3(x, y, 0);
         }
 
-        public List<Collider2D> CheckCardinalPoint()
+        public Collider2D[] CheckCardinalPoint()
         {
-            Vector2[] cardinalPoints = new Vector2[]
-            {
-                new Vector2(1,0),
-                new Vector2(-1,0),
-                new Vector2(0,1),
-                new Vector2(0,-1)
-            };
-            List<Collider2D> tileList = new List<Collider2D>();
-            foreach(Vector2 points in cardinalPoints) {
-                tileList.Add(Physics2D.OverlapPoint(points));
-            }           
-            return tileList;
+            // Todo Remove Hard coded values
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(0.5f, 0.5f), m_colliderRadiusToCheck);
+            return hitColliders;
         }
+
+        #endregion
+
+
+        #region Utils
+
+        #endregion
+
+
+        #region Privates & Protected
+
+        #endregion
     }
 }
