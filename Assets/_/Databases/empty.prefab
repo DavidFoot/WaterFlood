@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1864225732986228994}
   - component: {fileID: 7340328564092166182}
   - component: {fileID: -7445085941606840984}
+  - component: {fileID: -8304041746366482086}
   m_Layer: 0
   m_Name: empty
   m_TagString: Untagged
@@ -97,5 +98,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42859b15d1fea44438b6e9ea58f497c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateChangeWith: {fileID: 4106824336857586020, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
-  stateChangeTo: {fileID: 4106824336857586020, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  m_coordinate: {x: 0, y: 0}
+  m_score: 0
+  m_isInterractable: 0
+  m_typeName: 
+  m_checkCardinalPointDelay: 0.5
+  m_stateChangeWith: {fileID: 4106824336857586020, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  m_stateChangeTo: {fileID: 4106824336857586020, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  m_interractTo: {fileID: 5610569368768284658, guid: c5d0a6964a088234ab2a23880f2fcb12, type: 3}
+  m_renderer: {fileID: 0}
+  m_cardinalPointCollider: []
+--- !u!61 &-8304041746366482086
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4926462884541698631}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

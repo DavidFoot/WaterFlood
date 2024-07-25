@@ -1,9 +1,7 @@
 {
-    "name": "GenerateLevel.Runtime",
-    "rootNamespace": "GenerateLevel.Runtime",
-    "references": [
-        "GUID:94a140663b20c5b4d997619c3f82e940"
-    ],
+    "name": "CsvReader.Runtime",
+    "rootNamespace": "CsvReader.Runtime",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

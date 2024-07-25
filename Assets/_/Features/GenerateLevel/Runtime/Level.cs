@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tiles.Runtime;
 using UnityEngine;
 
 namespace GenerateLevel.Runtime
@@ -11,16 +12,18 @@ namespace GenerateLevel.Runtime
         public int m_tryLife;
         public LevelType[] m_levelDesign;
         public bool m_canAddTile;
-        public Level(int maxTry, LevelType[] level,bool canAddTile, string levelName, Vector2Int coordinate)
+        public List<Tile> m_interractableTiles;
+        public Level(int maxTry, LevelType[] level,bool canAddTile, string levelName, Vector2Int coordinate, List<Tile> interractableTiles)
         {
             m_tryLife = maxTry;
             m_levelDesign = level;
             m_canAddTile = canAddTile;
             m_levelName = levelName;
+            m_interractableTiles = interractableTiles;
         }
     }
     [System.Serializable]
-    public enum LevelType
+    public enum LevelType : ushort
     {
         SAND=0,
         EMPTY,
