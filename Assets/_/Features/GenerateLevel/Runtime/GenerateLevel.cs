@@ -25,19 +25,19 @@ namespace GenerateLevel.Runtime
             Level _currentLevel = _allLevels[_level];
             for (int i = 0 ; i < _gridSize; i++)
             {
-                Vector2Int pos = GetPositionFromIndex(i);
+                Vector3Int pos = GetPositionFromIndex(i);
                 ushort _index = (ushort)_currentLevel.m_levelDesign[i];
                 GameObject gridCell = Tile.IntantiateNewTile(_tilesRepository[_index], transform, pos, _currentLevel.m_interractableTiles);
                 
             }
         }
 
-        private Vector2Int GetPositionFromIndex(int i)
+        private Vector3Int GetPositionFromIndex(int i)
         {
             int y = i / _levelSize.x;
             int x = i - y * _levelSize.x;
             if (i % _levelSize.x == 0) x = 0;
-            return new Vector2Int(x, y);
+            return new Vector3Int(x, y,0);
         }
 
         

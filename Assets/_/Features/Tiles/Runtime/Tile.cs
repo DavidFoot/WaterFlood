@@ -8,7 +8,7 @@ namespace Tiles.Runtime
 {
     public class  Tile : MonoBehaviour
     {
-        public Vector2Int m_coordinate;
+        public Vector3Int m_coordinate;
         public int m_score;
         public bool m_isInterractable;
         public string m_typeName;
@@ -60,10 +60,10 @@ namespace Tiles.Runtime
                 }
             }
         }
-        public static GameObject IntantiateNewTile(GameObject go, Transform parent, Vector2Int coordinate, List<Tile> interractableObjectInLevel)
+        public static GameObject IntantiateNewTile(GameObject go, Transform parent, Vector3Int coordinate, List<Tile> interractableObjectInLevel)
         {
             GameObject newTile = Instantiate(go, parent);
-            newTile.transform.position = (Vector2)coordinate;
+            newTile.transform.position = (Vector3)coordinate;
             newTile.name = go.name + $"{coordinate.x},{coordinate.y}";
             Tile tile = newTile.GetComponent<Tile>();
             tile.SetCoordinate(coordinate.x, coordinate.y);
@@ -83,7 +83,7 @@ namespace Tiles.Runtime
         }
         public void SetCoordinate(int x, int y)
         {
-            m_coordinate = new Vector2Int(x,y);
+            m_coordinate = new Vector3Int(x,y, 0);
         }
 
         public List<Collider2D> CheckCardinalPoint()
