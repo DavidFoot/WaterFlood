@@ -229,12 +229,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_coordinate: {x: 0, y: 0, z: 0}
-  m_score: 0
+  m_score: 10
   m_isInterractable: 0
   m_typeName: 
-  m_stateChangeWith: {fileID: 1270860642094983645, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  m_stateChangeWith:
+  - {fileID: 1270860642094983645, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  - {fileID: -1446468491224893900, guid: 2d8e69d9c7d49f74ab2e58e529c5da9d, type: 3}
+  - {fileID: -7449426536806316303, guid: 78f7947ee23f6c044b73d7e797971e53, type: 3}
+  - {fileID: 4585733196854840570, guid: 1d2141d182a600042843cb6e2d1449c9, type: 3}
   m_stateChangeTo: {fileID: 6770909633561952023, guid: 2d8e69d9c7d49f74ab2e58e529c5da9d, type: 3}
   m_interractTo: {fileID: 0}
   m_renderer: {fileID: 0}
   m_cardinalPointCollider: []
   m_colliderRadiusToCheck: 0.5
+  m_checkCardinalPointDelay: 0.8

@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Tiles.Runtime;
 using UnityEngine;
 
 namespace GenerateLevel.Runtime
@@ -8,28 +6,40 @@ namespace GenerateLevel.Runtime
     public class GenerateLevel : MonoBehaviour
     {
         #region Publics
-
+        public int m_maxLevel = 0;
+        public int m_maxLife = 0;
+        public int m_levelScore;
         #endregion
 
         #region Unity API
         private void Awake()
         {
             _gridSize = _levelSize.x * _levelSize.y;
-            LoadLevelFrom(1);
+            m_maxLevel = _allLevels.Count;
         }
         #endregion
 
         #region Main methods
 
-        private void LoadLevelFrom(int _level) {
-            Level _currentLevel = _allLevels[_level];
-            for (int i = 0 ; i < _gridSize; i++)
+        public void LoadLevelFrom(int _level) {
+            
+            foreach( Transform _child in transform)
             {
-                Vector3 pos = GetPositionFromIndex(i);
-                ushort _index = (ushort)_currentLevel.m_levelDesign[i];
-                GameObject gridCell = Tile.IntantiateNewTile(_tilesRepository[_index], transform, pos, _currentLevel.m_interractableTiles);
-                
+                Destroy( _child.gameObject );
             }
+
+            if (_level >= 0 && _level < m_maxLevel) { 
+                Level _currentLevel = _allLevels[_level];
+                m_maxLife = _currentLevel.m_tryLife;
+                for (int i = 0 ; i < _gridSize; i++)
+                {
+                    Vector3 pos = GetPositionFromIndex(i);
+                    ushort _index = (ushort)_currentLevel.m_levelDesign[i];
+                    GameObject gridCell = Tile.IntantiateNewTile(_tilesRepository[_index], transform, pos, _currentLevel.m_interractableTiles);               
+                }
+            }
+            Tile.Reset();
+            m_levelScore = Tile.GetScoreLevel();
         }
 
         private Vector3 GetPositionFromIndex(int i)
@@ -39,8 +49,6 @@ namespace GenerateLevel.Runtime
             if (i % _levelSize.x == 0) x = 0;
             return new Vector3(x, y,0);
         }
-
-        
 
         #endregion
 
@@ -53,7 +61,8 @@ namespace GenerateLevel.Runtime
         [SerializeField] List<Level> _allLevels;
         [SerializeField] GameObject[] _tilesRepository;
         [SerializeField] Vector2Int _levelSize ;
-        private int _gridSize;
+        private int _gridSize;      
+
         #endregion
     }
 

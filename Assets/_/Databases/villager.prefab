@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5999417676012798067}
   - component: {fileID: 5408994942897327426}
   - component: {fileID: 623214401169016935}
+  - component: {fileID: -1585743212948325863}
   m_Layer: 0
   m_Name: villager
   m_TagString: Untagged
@@ -215,3 +216,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-1585743212948325863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859882225215168265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3580478f72d2924faca3b2b0c4b15bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_coordinate: {x: 0, y: 0, z: 0}
+  m_score: -1
+  m_isInterractable: 0
+  m_typeName: 
+  m_stateChangeWith:
+  - {fileID: 4585733196854840570, guid: 1d2141d182a600042843cb6e2d1449c9, type: 3}
+  - {fileID: 1270860642094983645, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  - {fileID: -1446468491224893900, guid: 2d8e69d9c7d49f74ab2e58e529c5da9d, type: 3}
+  - {fileID: -7449426536806316303, guid: 78f7947ee23f6c044b73d7e797971e53, type: 3}
+  m_stateChangeTo: {fileID: 1853319363130221516, guid: 78f7947ee23f6c044b73d7e797971e53, type: 3}
+  m_interractTo: {fileID: 0}
+  m_renderer: {fileID: 0}
+  m_cardinalPointCollider: []
+  m_colliderRadiusToCheck: 0.5
+  m_checkCardinalPointDelay: 0.8

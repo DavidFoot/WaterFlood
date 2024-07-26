@@ -147,9 +147,10 @@ MonoBehaviour:
   m_score: 0
   m_isInterractable: 0
   m_typeName: 
-  m_checkCardinalPointDelay: 0.5
-  m_stateChangeWith: {fileID: 0}
+  m_stateChangeWith:
+  - {fileID: 0}
   m_stateChangeTo: {fileID: 0}
   m_interractTo: {fileID: 4926462884541698631, guid: 5f5e770db1e1b0940bd0249eefa9a4e3, type: 3}
   m_renderer: {fileID: 0}
   m_cardinalPointCollider: []
+  m_colliderRadiusToCheck: 0.5

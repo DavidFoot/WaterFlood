@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4553897650269112297}
   - component: {fileID: -8951783758988462880}
   - component: {fileID: 542726890850665947}
+  - component: {fileID: 5719890333953701316}
   m_Layer: 0
   m_Name: stone
   m_TagString: Untagged
@@ -147,9 +148,32 @@ MonoBehaviour:
   m_score: 0
   m_isInterractable: 0
   m_typeName: 
-  m_checkCardinalPointDelay: 0.5
-  m_stateChangeWith: {fileID: 0}
+  m_stateChangeWith:
+  - {fileID: 0}
   m_stateChangeTo: {fileID: 0}
   m_interractTo: {fileID: 0}
   m_renderer: {fileID: 0}
   m_cardinalPointCollider: []
+  m_colliderRadiusToCheck: 0.5
+--- !u!114 &5719890333953701316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6822631220250872183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8ceba83f2e78b4ba5130fb7123a547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_coordinate: {x: 0, y: 0, z: 0}
+  m_score: 0
+  m_isInterractable: 0
+  m_typeName: 
+  m_stateChangeWith: []
+  m_stateChangeTo: {fileID: 0}
+  m_interractTo: {fileID: 0}
+  m_renderer: {fileID: 0}
+  m_cardinalPointCollider: []
+  m_colliderRadiusToCheck: 0.5

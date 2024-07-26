@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Tiles.Runtime;
 using UnityEngine;
 
 namespace GenerateLevel.Runtime
@@ -34,6 +33,8 @@ namespace GenerateLevel.Runtime
         VILLAGER,
         VILLAGERDROWN,
         ZOMBIE,
-        ZOMBIEDROWN
+        ZOMBIEDROWN,
+        BRIDGE,
+        BRIDGEDROWN      
     }
 }
