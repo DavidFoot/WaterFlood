@@ -8,16 +8,17 @@ namespace GenerateLevel.Runtime
     public struct Level
     {
         public string m_levelName;
+        public Vector2Int m_levelSize;
         public int m_tryLife;
         public LevelType[] m_levelDesign;
-        public bool m_canAddTile;
         public List<Tile> m_interractableTiles;
-        public Level(int maxTry, LevelType[] level,bool canAddTile, string levelName, Vector2Int coordinate, List<Tile> interractableTiles)
+        public Level(int maxTry, LevelType[] level,bool canAddTile, string levelName, Vector2Int coordinate, Vector2Int levelSize, List<Tile> interractableTiles)
         {
             m_tryLife = maxTry;
             m_levelDesign = level;
-            m_canAddTile = canAddTile;
             m_levelName = levelName;
+            m_interractableTiles = interractableTiles;
+            m_levelSize = levelSize;
             m_interractableTiles = interractableTiles;
         }
     }

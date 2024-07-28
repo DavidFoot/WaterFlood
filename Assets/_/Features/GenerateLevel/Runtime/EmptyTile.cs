@@ -9,7 +9,7 @@ namespace GenerateLevel.Runtime
     {
 
         #region Publics
-        float m_checkCardinalPointDelay = 0.4f;
+        float m_checkCardinalPointDelay = 0.01f;
         #endregion
 
         #region Unity API
@@ -29,13 +29,13 @@ namespace GenerateLevel.Runtime
                     {
                         if (cardinalCollider.gameObject.GetComponent<Tile>().GetType().IsEquivalentTo(stateChange.GetType()))
                         {
-                            ReplaceTileWith(m_stateChangeTo);
+                            ReplaceTileWith(m_onStateChangeSwitchTo);
                         }
                     }
                 }
                 _currentTimer = 0;
             }
-            _currentTimer += Time.deltaTime;
+            _currentTimer += Time.fixedDeltaTime;
         }
         void OnDrawGizmos()
         {

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GenerateLevel.Runtime
 {
@@ -12,15 +13,15 @@ namespace GenerateLevel.Runtime
         public bool m_isInterractable;
         public string m_typeName;
         public Tile[] m_stateChangeWith;
-        public GameObject m_stateChangeTo;
-        public GameObject m_interractTo;
+        public GameObject m_onStateChangeSwitchTo;
+        public GameObject m_onClicSwitchTo;
         public Renderer m_renderer;
         private List<Tile> m_interractableByLevel;
         public Collider2D[] m_cardinalPointCollider;
         public float m_colliderRadiusToCheck = 0.5f;
-        public static int m_nbInterraction;
-        public static bool instantDeath = false;
-        public static int m_maxScoreForLevel = 0;
+        public UnityEvent<int> m_scoreEvent = new UnityEvent<int>();
+        public UnityEvent m_interractEvent = new UnityEvent();
+
         #endregion
 
 
@@ -70,27 +71,19 @@ namespace GenerateLevel.Runtime
         {
             if (m_isInterractable)
             {
-                if (m_interractTo)
+                if (m_onClicSwitchTo)
                 {
-                    GameObject newTile = IntantiateNewTile(m_interractTo, transform.parent, m_coordinate, m_interractableByLevel);
+                    GameObject newTile = IntantiateNewTile(m_onClicSwitchTo, transform.parent, m_coordinate, m_interractableByLevel);
                     Destroy(this.gameObject);
-                    m_nbInterraction++;
+                    m_interractEvent.Invoke();
                 }
             }
         }
-        public static void Reset()
-        {
-            m_nbInterraction = 0 ;
-            instantDeath = false ;
-            m_maxScoreForLevel = 0;
-        }
-        public static int GetScoreLevel()
-        {
-            return m_maxScoreForLevel;
-        }
+
         public void ReplaceTileWith(GameObject tileReplacement)
         {
-            GameObject newTile = IntantiateNewTile(m_stateChangeTo, transform.parent, m_coordinate, m_interractableByLevel);
+            GameObject newTile = IntantiateNewTile(m_onStateChangeSwitchTo, transform.parent, m_coordinate, m_interractableByLevel);
+            if (m_score != 0) m_scoreEvent.Invoke(m_score);
             Destroy(this.gameObject);
         }
         public static GameObject IntantiateNewTile(GameObject go, Transform parent, Vector3 coordinate, List<Tile> interractableObjectInLevel)
@@ -102,7 +95,6 @@ namespace GenerateLevel.Runtime
             tile.SetCoordinate(coordinate.x, coordinate.y);
             tile.m_interractableByLevel = interractableObjectInLevel;
             tile.m_typeName = go.name;
-            m_maxScoreForLevel += tile.m_score;
             if (tile.IsInListOfInterractable(interractableObjectInLevel)) tile.m_isInterractable = true;
             return newTile;
         }

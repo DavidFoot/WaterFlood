@@ -237,9 +237,15 @@ MonoBehaviour:
   - {fileID: -1446468491224893900, guid: 2d8e69d9c7d49f74ab2e58e529c5da9d, type: 3}
   - {fileID: -7449426536806316303, guid: 78f7947ee23f6c044b73d7e797971e53, type: 3}
   - {fileID: 4585733196854840570, guid: 1d2141d182a600042843cb6e2d1449c9, type: 3}
-  m_stateChangeTo: {fileID: 6770909633561952023, guid: 2d8e69d9c7d49f74ab2e58e529c5da9d, type: 3}
-  m_interractTo: {fileID: 0}
+  m_onStateChangeSwitchTo: {fileID: 6770909633561952023, guid: 2d8e69d9c7d49f74ab2e58e529c5da9d, type: 3}
+  m_onClicSwitchTo: {fileID: 0}
   m_renderer: {fileID: 0}
   m_cardinalPointCollider: []
   m_colliderRadiusToCheck: 0.5
+  m_scoreEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_interractEvent:
+    m_PersistentCalls:
+      m_Calls: []
   m_checkCardinalPointDelay: 0.8

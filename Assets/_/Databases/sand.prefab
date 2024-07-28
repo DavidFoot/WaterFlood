@@ -149,8 +149,8 @@ MonoBehaviour:
   m_typeName: 
   m_stateChangeWith:
   - {fileID: 0}
-  m_stateChangeTo: {fileID: 0}
-  m_interractTo: {fileID: 4926462884541698631, guid: 5f5e770db1e1b0940bd0249eefa9a4e3, type: 3}
+  m_onStateChangeSwitchTo: {fileID: 0}
+  m_onClicSwitchTo: {fileID: 4926462884541698631, guid: 5f5e770db1e1b0940bd0249eefa9a4e3, type: 3}
   m_renderer: {fileID: 0}
   m_cardinalPointCollider: []
   m_colliderRadiusToCheck: 0.5

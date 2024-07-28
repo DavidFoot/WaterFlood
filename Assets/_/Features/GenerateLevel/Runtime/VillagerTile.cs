@@ -8,7 +8,7 @@ namespace GenerateLevel.Runtime
     {
         #region Publics
 
-        public float m_checkCardinalPointDelay = 0.8f;
+        public float m_checkCardinalPointDelay = 0.01f;
 
         #endregion
 
@@ -24,14 +24,13 @@ namespace GenerateLevel.Runtime
                     {
                         if (cardinalCollider.gameObject.GetComponent<Tile>().GetType().IsEquivalentTo(stateChange.GetType()))
                         {
-                            ReplaceTileWith(m_stateChangeTo);
-                            Tile.instantDeath = true;
+                            ReplaceTileWith(m_onStateChangeSwitchTo);
                         }
                     }
                 }
                 _currentTimer = 0;
             }
-            _currentTimer += Time.deltaTime;
+            _currentTimer += Time.fixedDeltaTime;
         }
         #endregion
 

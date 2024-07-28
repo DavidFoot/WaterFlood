@@ -107,8 +107,8 @@ MonoBehaviour:
   - {fileID: 4585733196854840570, guid: 1d2141d182a600042843cb6e2d1449c9, type: 3}
   - {fileID: -7449426536806316303, guid: 78f7947ee23f6c044b73d7e797971e53, type: 3}
   - {fileID: -1446468491224893900, guid: 2d8e69d9c7d49f74ab2e58e529c5da9d, type: 3}
-  m_stateChangeTo: {fileID: 4106824336857586020, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
-  m_interractTo: {fileID: 5610569368768284658, guid: c5d0a6964a088234ab2a23880f2fcb12, type: 3}
+  m_onStateChangeSwitchTo: {fileID: 4106824336857586020, guid: 8c1b63205d94bdd4e86a3bfc9ce1a3f4, type: 3}
+  m_onClicSwitchTo: {fileID: 5610569368768284658, guid: c5d0a6964a088234ab2a23880f2fcb12, type: 3}
   m_renderer: {fileID: 0}
   m_cardinalPointCollider: []
   m_colliderRadiusToCheck: 0.5

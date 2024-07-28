@@ -7,28 +7,31 @@ namespace GenerateLevel.Runtime
     public class ZombieTile: Tile
     {
         #region Publics
-        public float m_checkCardinalPointDelay = 0.8f;
+        public float m_checkCardinalPointDelay = 0.01f;
         #endregion
 
 
         private void Update()
         {
-            if (_currentTimer > m_checkCardinalPointDelay)
+            if (_currentTimer > m_checkCardinalPointDelay && !_alreadySwitch)
             {
                 m_cardinalPointCollider = CheckCardinalPoint();
                 foreach (Collider2D cardinalCollider in m_cardinalPointCollider)
                 {
+
                     foreach(Tile stateChange in m_stateChangeWith)
                     {
                         if (cardinalCollider.gameObject.GetComponent<Tile>().GetType().IsEquivalentTo(stateChange.GetType()))
                         {
-                            ReplaceTileWith(m_stateChangeTo);
+                            _alreadySwitch = true;
+                            ReplaceTileWith(m_onStateChangeSwitchTo);
+                            return;
                         }
                     }
                 }
                 _currentTimer = 0;
             }
-            _currentTimer += Time.deltaTime;
+            _currentTimer += Time.fixedDeltaTime;
         }
 
 
@@ -44,6 +47,7 @@ namespace GenerateLevel.Runtime
 
         #region Privates & Protected
         float _currentTimer = 0;
+        bool _alreadySwitch = false;
         #endregion
     }
 }

@@ -16,22 +16,13 @@ namespace GameManager.Runtime
 
         private void Start()
         {
-            _lvlGenerator.LoadLevelFrom(_currentLevelCount);
+            _allGridTiles = _lvlGenerator.LoadLevelFrom(_currentLevelCount);
+            EventHandler();
             _uiLife.text = $"Coups Restants: {_lvlGenerator.m_maxLife}";
             _uiLevelCount.text = $"Level : {_currentLevelCount+1}";
         }
-        private void Update()
-        {          
-            if (Tile.m_nbInterraction != 0) {
-                _lvlGenerator.m_maxLife -= Tile.m_nbInterraction;
-                Tile.m_nbInterraction = 0;
-                _uiLife.text = $"Coups Restants: {_lvlGenerator.m_maxLife}";
-                _uiLevelCount.text = $"Level : {_currentLevelCount + 1}";
-            }
-            if (_lvlGenerator.m_maxLife == 0) YouLoose();
-            if (Tile.instantDeath) YouLoose();
-            Debug.Log(_lvlGenerator.m_levelScore);
-        }
+
+
         #endregion
 
 
@@ -39,22 +30,29 @@ namespace GameManager.Runtime
 
         public void YouLoose()
         {
-            Debug.Log("You Loose");
             _lvlGenerator.gameObject.SetActive(false);
             _looseText.SetActive(true);          
         }
+        public void YouWin() {
+            _lvlGenerator.gameObject.SetActive(false);
+            _winText.SetActive(true);
+        }
         public void RestartCurrentLevel()
         {          
-            AtResetEveryLevel();
+            ToResetAtEveryLevel();
         }
 
-        private void AtResetEveryLevel()
+        private void ToResetAtEveryLevel()
         {
             _lvlGenerator.gameObject.SetActive(true);
             _looseText.SetActive(false);
+            _winText.SetActive(false);
             _lvlGenerator.LoadLevelFrom(_currentLevelCount);
             _uiLife.text = $"Coups Restants: {_lvlGenerator.m_maxLife}";
             _uiLevelCount.text = $"Level : {_currentLevelCount + 1}";
+            _currentLevelScore = 0;
+            _currentLevelInterract = 0;
+            EventHandler();
         }
 
         public void NextLevel()
@@ -62,7 +60,7 @@ namespace GameManager.Runtime
             if (_currentLevelCount + 1 >= 0 && (_currentLevelCount + 1) < _lvlGenerator.m_maxLevel)
             {
                 _currentLevelCount++;
-                AtResetEveryLevel();
+                ToResetAtEveryLevel();
             }
         }
         public void PreviousLevel()
@@ -70,10 +68,27 @@ namespace GameManager.Runtime
             if (_currentLevelCount - 1 >= 0 && (_currentLevelCount - 1) < _lvlGenerator.m_maxLevel)
             {
                 _currentLevelCount--;
-                AtResetEveryLevel();
+                ToResetAtEveryLevel();
             }
         }
 
+        public void EventHandler() 
+        {
+            foreach (Tile _tile in _allGridTiles) {
+                _tile.m_interractEvent.AddListener(InterractCount);
+                _tile.m_scoreEvent.AddListener(AddScore);
+            }
+        }
+        public void AddScore(int score) {
+            if (score == -1) YouLoose();
+            _currentLevelScore+= score;
+            if (_currentLevelScore == _lvlGenerator.m_levelScore) YouWin();
+        }
+        public void InterractCount() {
+            _currentLevelInterract++;
+            _uiLife.text = $"Coups Restants: {_lvlGenerator.m_maxLife - _currentLevelInterract}";
+            if (_lvlGenerator.m_maxLife == _currentLevelInterract) YouLoose();
+        }
         #endregion
 
         #region Utils
@@ -88,8 +103,10 @@ namespace GameManager.Runtime
 
         [SerializeField] TextMeshProUGUI _uiLife ;
         [SerializeField] TextMeshProUGUI _uiLevelCount ;
-
+        List<Tile> _allGridTiles;
         int _currentLevelCount = 0;
+        int _currentLevelScore = 0;
+        int _currentLevelInterract = 0;
         
         #endregion
     }

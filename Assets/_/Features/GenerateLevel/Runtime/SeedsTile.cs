@@ -7,13 +7,13 @@ namespace GenerateLevel.Runtime
     public class SeedsTile : Tile
     {
         #region Publics
-        public float m_checkCardinalPointDelay = 0.8f;
+        public float m_checkCardinalPointDelay = 0.01f;
         #endregion
 
         #region Unity API
         private void Update()
         {
-            if (_currentTimer > m_checkCardinalPointDelay)
+            if (_currentTimer > m_checkCardinalPointDelay && !_alreadySwitch)
             {
                 m_cardinalPointCollider = CheckCardinalPoint();
                 foreach (Collider2D cardinalCollider in m_cardinalPointCollider)
@@ -22,16 +22,15 @@ namespace GenerateLevel.Runtime
                     {
                         if (cardinalCollider.gameObject.GetComponent<Tile>().GetType().IsEquivalentTo(stateChange.GetType()))
                         {
-                            ReplaceTileWith(m_stateChangeTo);
+                            _alreadySwitch = true;
+                            ReplaceTileWith(m_onStateChangeSwitchTo);
+                            return;
                         }
                     }
                 }
                 _currentTimer = 0;
             }
-            _currentTimer += Time.deltaTime;
-            // Check Cardinal Point
-            // if (m_stateChangeWith) is in Cardinal Point
-            // change Tile to m_stateChangeTo
+            _currentTimer += Time.fixedDeltaTime;
         }
         #endregion
 
@@ -46,6 +45,7 @@ namespace GenerateLevel.Runtime
 
         #region Privates & Protected
         float _currentTimer = 0;
+        bool _alreadySwitch = false;
         #endregion
     }
 

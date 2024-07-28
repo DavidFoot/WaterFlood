@@ -23,7 +23,7 @@ namespace GenerateLevel.Runtime
                     {
                         if (cardinalCollider.gameObject.GetComponent<Tile>().GetType().IsEquivalentTo(stateChange.GetType()))
                         {
-                            ReplaceTileWith(m_stateChangeTo);
+                            ReplaceTileWith(m_onStateChangeSwitchTo);
                         }
                     }
                 }
