@@ -1,4 +1,3 @@
-using log4net.Util;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace GenerateLevel.Runtime
     {
 
         #region Publics
-        float m_checkCardinalPointDelay = 0.01f;
+        float m_checkCardinalPointDelay = 0.02f;
         #endregion
 
         #region Unity API
@@ -18,7 +17,8 @@ namespace GenerateLevel.Runtime
         { 
             base.Initialize();
         }
-        private void Update()
+        
+        private void FixedUpdate()
         {
             if (_currentTimer > m_checkCardinalPointDelay)
             {

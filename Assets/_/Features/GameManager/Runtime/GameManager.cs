@@ -42,6 +42,11 @@ namespace GameManager.Runtime
             ToResetAtEveryLevel();
         }
 
+        public void QuitApplication()
+        {
+            Application.Quit();
+        }
+
         private void ToResetAtEveryLevel()
         {
             _lvlGenerator.gameObject.SetActive(true);
